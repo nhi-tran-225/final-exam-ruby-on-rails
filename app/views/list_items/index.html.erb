@@ -1,0 +1,48 @@
+<div id="list_items">
+  <p class="h1 text-center">List items</p>
+  <table class="table table-hover">
+    <thead>
+    <tr class="table bg-light">
+      <th scope="col">#</th>
+      <th scope="col"><%= sortable "first_name" %></th>
+      <th scope="col">Las </th>
+      <th scope="col">Item </th>
+      <th scope="col">Item </th>
+      <th scope="col">Item </th>
+      <th scope="col" colspan="3" style="width: 15%">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% index = 1 %>
+    <% @list_items.each do |list_item| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= list_item.first_name %></td>
+        <td><%= list_item.last_name %></td>
+        <td><%= list_item.email %></td>
+        <td><%= list_item.phone %></td>
+        <td><%= list_item.class_name %></td>
+        <td><%= link_to list_item do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+        <td><%= link_to edit_list_item_path(list_item.id) do %>
+            <i class="fa fa-edit"></i>
+          <% end %>
+        </td>
+        <td>
+        <%= link_to list_item_path(list_item.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
+            <i class="fa fa-trash"></i>
+          <% end %>
+        </td>
+      </tr>
+      <% index += 1 %>
+    <% end %>
+    </tbody>
+  </table>
+  
+</div>
+
+<%= link_to new_list_item_path, class:"btn btn-outline-info" do%>
+  <i class="fa fa-plus"></i> New item
+<% end %>

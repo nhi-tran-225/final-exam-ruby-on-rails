@@ -1,0 +1,39 @@
+<%= form_with(model: list_item) do |form| %>
+  <% if list_item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(list_item.errors.count, "error") %> prohibited this list_item from being saved:</h2>
+
+      <ul>
+        <% list_item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">First Name</label>
+      <%= form.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Last Name</label>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Phone</label>
+      <%= form.text_field :phone, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Class Name</label>
+      <%= form.text_field :class_name, class: "form-control" %>
+    </div>
+    <div class="mt-2 float-end">
+      <%= form.submit :class => "btn btn-outline-success" %>
+    </div>
+  </fieldset>
+<% end %>
+</form>
